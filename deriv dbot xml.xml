@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbot>
+    <strategy>
+        <settings>
+            <stake>1</stake>
+            <duration>1</duration>
+            <duration_unit>ticks</duration_unit>
+            <payout>10</payout>
+            <trade_type>CALL/PUT</trade_type>
+        </settings>
+        <indicators>
+            <indicator>
+                <name>RSI</name>
+                <period>14</period>
+                <overbought>70</overbought>
+                <oversold>30</oversold>
+            </indicator>
+            <indicator>
+                <name>Moving Average</name>
+                <type>EMA</type>
+                <period>20</period>
+            </indicator>
+            <indicator>
+                <name>Bollinger Bands</name>
+                <period>20</period>
+                <deviation>2</deviation>
+            </indicator>
+        </indicators>
+        <entry_conditions>
+            <condition>
+                <indicator>RSI</indicator>
+                <operator>below</operator>
+                <value>30</value>
+                <action>BUY</action>
+            </condition>
+            <condition>
+                <indicator>RSI</indicator>
+                <operator>above</operator>
+                <value>70</value>
+                <action>SELL</action>
+            </condition>
+        </entry_conditions>
+        <exit_conditions>
+            <condition>
+                <indicator>Profit</indicator>
+                <operator>greater_than</operator>
+                <value>5</value>
+                <action>EXIT</action>
+            </condition>
+        </exit_conditions>
+        <risk_management>
+            <max_loss>50</max_loss>
+            <max_profit>100</max_profit>
+            <martingale_multiplier>1.5</martingale_multiplier>
+        </risk_management>
+    </strategy>
+</dbot>
